@@ -6,7 +6,14 @@
 .delButton{
     margin-top: 5px;
 }
+.updateButton{
+
+    margin-top: 5px;
+    padding-right: 100px;
+}
 
 .new_row{
     margin: 10px;
 }
+
+

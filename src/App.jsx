@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import { useState } from "react";
 import Accord from "./Accord";
 
+
 function App() {
   const [addButton, setaddButton] = useState("Add");
   const [title, setTitle] = useState("");
@@ -42,11 +43,19 @@ function App() {
     });
   };
 
+  const updateItem = (e) => {
+    const tempItems = [...allItem];
+    tempItems[e.index] = { title: e.title, description: e.description };
+    console.log(tempItems);
+    setallItem(tempItems);
+  };
+
   const listItems = (item, index) => {
     let data = {
       body: item,
       key: index,
-      handler: deleteItem,
+      delhandler: deleteItem,
+      updatehandler: updateItem,
     };
     return <Accord key={index} props={data} />;
   };
@@ -101,6 +110,13 @@ function App() {
           {allItem.length > 0 &&
             allItem.map((item, index) => listItems(item, index))}
         </div>
+        <a
+          href="https://github.com/Moiz03/todo-list-React-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Code on Github
+        </a>
       </Container>
     </>
   );
