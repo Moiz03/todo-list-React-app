@@ -3,20 +3,27 @@ import Accordion from "react-bootstrap/Accordion";
 import "./accord.css";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Accord({ props }) {
   const [updateButton, setUpdateButton] = useState("Update");
 
   const [title, setTitle] = useState(props.body.title);
   const [description, setDescription] = useState(props.body.description);
+
+  useEffect(() => {
+    setTitle(props.body.title);
+    setDescription(props.body.description);
+  },[props.body.title,props.body.description]);
+
   const enabled = updateButton === "Cancel";
+
   const handleUpdate = () => {
     if (updateButton === "Update") {
       setUpdateButton("Cancel");
     } else {
       setUpdateButton("Update");
     }
-    disableDelete();
   };
 
   const handleSubmit = (event) => {
@@ -36,9 +43,6 @@ export default function Accord({ props }) {
     }
   };
 
-  const disableDelete = () => {
-    return updateButton === "Cancel";
-  };
   return (
     <>
       <Row className="new_row">
@@ -73,7 +77,7 @@ export default function Accord({ props }) {
       {updateButton === "Cancel" && (
         <>
           <Form className="form" onSubmit={handleSubmit}>
-            <Form.Group className="mb-3 " controlId="formBasicEmail">
+            <Form.Group className="mb-3 " controlId="formBasicTitle2">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
@@ -85,7 +89,7 @@ export default function Accord({ props }) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="formBasicDescription2">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="textarea"

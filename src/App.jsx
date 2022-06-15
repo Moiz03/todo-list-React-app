@@ -46,7 +46,6 @@ function App() {
   const updateItem = (e) => {
     const tempItems = [...allItem];
     tempItems[e.index] = { title: e.title, description: e.description };
-    console.log(tempItems);
     setallItem(tempItems);
   };
 
@@ -57,13 +56,14 @@ function App() {
       delhandler: deleteItem,
       updatehandler: updateItem,
     };
+    console.log("yes");
     return <Accord key={index} props={data} />;
   };
 
   return (
     <>
       <Container className="container">
-        <h1 className="header">Todo List</h1>
+        <h1 className="header">Todo List.</h1>
 
         <Button
           variant="outline-dark"
@@ -75,7 +75,7 @@ function App() {
         <div className="con">
           {addButton === "Cancel" && (
             <Form className="form" onSubmit={handleSubmit}>
-              <Form.Group className="mb-3 " controlId="formBasicEmail">
+              <Form.Group className="mb-3 " controlId="formBasicTitle1">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="text"
@@ -87,7 +87,7 @@ function App() {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formBasicDescription1">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   type="textarea"
