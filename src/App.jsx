@@ -63,9 +63,7 @@ function App() {
   return (
     <>
       <Container className="container">
-        <div style={{ textAlign: "center", marginBottom: "50px" }}>
-          <h1>Todo List</h1>
-        </div>
+        <h1 className="header">Todo List</h1>
 
         <Button
           variant="outline-dark"
